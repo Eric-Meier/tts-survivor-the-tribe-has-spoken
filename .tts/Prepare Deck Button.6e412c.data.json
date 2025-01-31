@@ -1,0 +1,46 @@
+{
+  "GUID": "6e412c",
+  "Name": "backgammon_piece_brown",
+  "Transform": {
+    "posX": 12.11349,
+    "posY": 1.0752511,
+    "posZ": 1.42360687,
+    "rotX": -1.14050188e-7,
+    "rotY": 3.38939934e-8,
+    "rotZ": 2.00247626e-7,
+    "scaleX": 0.250000417,
+    "scaleY": 0.250000417,
+    "scaleZ": 0.250000417
+  },
+  "Nickname": "Prepare Deck Button",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.858823538,
+    "g": 0.1019607,
+    "b": 0.0941175446,
+    "a": 0
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "LuaScript": "self.lock()\nself.interactable = false\nself.tooltip = false\n\nfunction click_func(player,value,id)\n    singleDeck=getObjectFromGUID(\"57a5ca\")\n    doubleDeck=getObjectFromGUID(\"5eb4b9\")\n\n    --n = #getSeatedPlayers()\n    n=5\n    if n < 3 then\n        broadcastToAll(\"You need 3 people to play!\")\n    else\n        broadcastToAll(\"Preparing Deck for \"..n..\" Players\")\n        mainDeck=getObjectFromGUID(\"67530b\")\n        mainDeck.shuffle()\n    end\n\n    if n==3 then\n        tribalDeck = singleDeck\n        tribals = tribalDeck.getQuantity()\n        mainDecks=mainDeck.split(tribals)\n        for i = 1, tribals do\n            mainDecks[i] = mainDecks[i].putObject(tribalDeck.takeObject({smooth=false}))\n        end\n        for i = 2, tribals do\n            mainDeck = mainDecks[1].putObject(mainDecks[i])\n        end\n        mainDeck.rotate({0,-90,0})\n        destroyObject(singleDeck)\n        destroyObject(doubleDeck)\n        destroyObject(self)\n    end\n    if n==4 then\n        tribalDeck = singleDeck.takeObject({position={0,0,-5},smooth=false})\n        tribalDeck = tribalDeck.putObject(singleDeck.takeObject({smooth=false}))\n        tribalDeck = tribalDeck.putObject(doubleDeck.takeObject({smooth=false}))\n        tribalDeck = tribalDeck.putObject(doubleDeck.takeObject({smooth=false}))\n        tribalDeck.shuffle()\n        tribals = tribalDeck.getQuantity()\n        mainDecks=mainDeck.split(tribals)\n        for i = 1, tribals do\n            mainDecks[i] = mainDecks[i].putObject(tribalDeck.takeObject({smooth=false}))\n        end\n        for i = 2, tribals do\n            mainDeck = mainDecks[1].putObject(mainDecks[i])\n        end\n        mainDeck.rotate({0,-90,0})\n        destroyObject(singleDeck)\n        destroyObject(doubleDeck)\n        destroyObject(self)\n    end\n    if n==5 then\n        tribalDeck = singleDeck.takeObject({position={0,0,-5},smooth=false})\n        tribalDeck = tribalDeck.putObject(singleDeck.takeObject({smooth=false}))\n        tribalDeck = tribalDeck.putObject(doubleDeck.takeObject({smooth=false}))\n        tribalDeck = tribalDeck.putObject(doubleDeck.takeObject({smooth=false}))\n        tribalDeck = tribalDeck.putObject(doubleDeck.takeObject({smooth=false}))\n        tribalDeck.shuffle()\n        tribals = tribalDeck.getQuantity()\n        mainDecks=mainDeck.split(tribals)\n        for i = 1, tribals do\n            mainDecks[i] = mainDecks[i].putObject(tribalDeck.takeObject({smooth=false}))\n        end\n        for i = 2, tribals do\n            mainDeck = mainDecks[1].putObject(mainDecks[i])\n        end\n        mainDeck.rotate({0,-90,0})\n        destroyObject(singleDeck)\n        destroyObject(doubleDeck)\n        destroyObject(self)\n    end\n    if n==6 then\n        tribalDeck = doubleDeck\n        tribals = tribalDeck.getQuantity()\n        mainDecks=mainDeck.split(tribals)\n        for i = 1, tribals do\n            mainDecks[i] = mainDecks[i].putObject(tribalDeck.takeObject({smooth=false}))\n        end\n        for i = 2, tribals do\n            mainDeck = mainDecks[1].putObject(mainDecks[i])\n        end\n        mainDeck.rotate({0,-90,0})\n        destroyObject(singleDeck)\n        destroyObject(doubleDeck)\n        destroyObject(self)\n    end\nend",
+  "LuaScriptState": "",
+  "XmlUI": "<Button\n    onClick=\"click_func\"\n    height=\"500\"\n    width=\"2000\"\n    color=\"grey\"\n    fontSize=\"200\"\n>\nClick to prepare deck\n</Button>"
+}

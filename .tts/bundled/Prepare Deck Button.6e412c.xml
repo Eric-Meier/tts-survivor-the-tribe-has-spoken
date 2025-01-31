@@ -1,0 +1,9 @@
+<Button
+    onClick="click_func"
+    height="500"
+    width="2000"
+    color="grey"
+    fontSize="200"
+>
+Click to prepare deck
+</Button>
