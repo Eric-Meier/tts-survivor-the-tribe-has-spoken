@@ -30,7 +30,7 @@ function click_func(player,value,id)
         tribals = tribalBag.getQuantity()
         destroyObject(tribalBag)
         mainDecks=mainDeck.split(tribals)
-        Physics.setGravity({0,-5,0})
+        Physics.setGravity({0,-2,0})
         for i = 1, tribals do
             tribalBag.takeObject({smooth=false,position={5,(i-1)*0.5+1,0}}).flip()
             mainDecks[i].setPosition({5,(i-1)*0.5+1.25,0})
@@ -40,11 +40,11 @@ function click_func(player,value,id)
         end
         Wait.time(function() 
             Physics.setGravity({0,-25,0}) 
-        end, 1)
+        end, 1.5)
     end
 
     n = #getSeatedPlayers()
-    -- n=3
+    -- n=6
 
     if n < 3 then
         broadcastToAll("Minimum of 3 players!")
