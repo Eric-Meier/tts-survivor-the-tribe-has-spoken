@@ -1,5 +1,8 @@
 # Survivor: The Tribe Has Spoken
 
+![GitHub Release](https://img.shields.io/github/v/release/Eric-Meier/tts-survivor-the-tribe-has-spoken)
+
+
 This is a Tabletop Simulator scripted file containing all the scripting elements for playing Survivor: The Tribe Has Spoken. It is hosted on the steam workshop.
 
 ## Installation
